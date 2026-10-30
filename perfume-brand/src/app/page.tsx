@@ -288,6 +288,10 @@ export default function Home() {
                 <div className={`product-visual ${index === 0 ? 'product-1' : index === 1 ? 'product-2' : 'product-3'}`}>
                   <div className="mini-bottle">
                     <span className="mini-cap" />
+                    <span className="mini-bottle-label">
+                      <strong>HA</strong>
+                      <em>{product.name}</em>
+                    </span>
                   </div>
                 </div>
 
