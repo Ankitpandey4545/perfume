@@ -35,12 +35,82 @@ export default function ContactPage() {
           <h3>Let your signature begin here</h3>
         </div>
 
-        <div className="testimonial-box" style={{ maxWidth: '760px' }}>
-          <div className="story-card" style={{ minHeight: 'auto', background: 'rgba(18,18,18,0.9)' }}>
-            <p><strong>Email:</strong> <a href="mailto:hello@houseofarham.com">hello@houseofarham.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+919999999999">+91 99999 99999</a></p>
-            <p><strong>Instagram:</strong> <a href="#">@houseofarham</a></p>
+        <div className="contact-panel">
+          <div className="contact-copy">
+            <p className="eyebrow">Private consultation</p>
+            <h4>Tell us what scent feeling you want to create.</h4>
+            <p>
+              Share your preferences and we will help match a fragrance profile,
+              gifting suggestion, or signature scent for your occasion.
+            </p>
+
+            <div className="contact-details-list">
+              <div>
+                <span>Email</span>
+                <a href="mailto:hello@houseofarham.com">hello@houseofarham.com</a>
+              </div>
+              <div>
+                <span>Phone</span>
+                <a href="tel:+919999999999">+91 99999 99999</a>
+              </div>
+              <div>
+                <span>Instagram</span>
+                <a href="#">@houseofarham</a>
+              </div>
+            </div>
           </div>
+
+          <form className="contact-form">
+            <div className="field-group">
+              <label htmlFor="contact-name">Name</label>
+              <input id="contact-name" type="text" name="name" placeholder="Your full name" />
+            </div>
+
+            <div className="field-group">
+              <label htmlFor="contact-email">Email</label>
+              <input id="contact-email" type="email" name="email" placeholder="you@example.com" />
+            </div>
+
+            <div className="field-group">
+              <label htmlFor="contact-phone">Phone</label>
+              <input id="contact-phone" type="tel" name="phone" placeholder="+91 98xx xxxxx" />
+            </div>
+
+            <div className="field-group">
+              <label htmlFor="contact-product">Product</label>
+              <select id="contact-product" name="product" defaultValue="">
+                <option value="" disabled>Select a fragrance</option>
+                <option value="Night Veil">Night Veil</option>
+                <option value="Dark Elixir">Dark Elixir</option>
+                <option value="Velvet Bloom">Velvet Bloom</option>
+                <option value="Gift Set">Gift Set</option>
+              </select>
+            </div>
+
+            <div className="field-group">
+              <label htmlFor="contact-location">Location</label>
+              <input id="contact-location" type="text" name="location" placeholder="City or area" />
+            </div>
+
+            <div className="field-group">
+              <label htmlFor="contact-rating">Rating</label>
+              <select id="contact-rating" name="rating" defaultValue="">
+                <option value="" disabled>Select your rating</option>
+                <option value="5 - Excellent">5 - Excellent</option>
+                <option value="4 - Very Good">4 - Very Good</option>
+                <option value="3 - Good">3 - Good</option>
+                <option value="2 - Fair">2 - Fair</option>
+                <option value="1 - Low">1 - Low</option>
+              </select>
+            </div>
+
+            <div className="field-group full-width">
+              <label htmlFor="contact-details">More details</label>
+              <textarea id="contact-details" name="details" rows={5} placeholder="Tell us your preferred scent family, occasion, or gifting requirement." />
+            </div>
+
+            <button type="submit" className="primary-btn contact-submit">Send enquiry</button>
+          </form>
         </div>
       </main>
 

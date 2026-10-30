@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import BrandLogo from '@/components/BrandLogo';
 
@@ -73,12 +74,16 @@ const faqs = [
   },
 ];
 
+const ratingOptions = ['5 - Excellent', '4 - Very Good', '3 - Good', '2 - Fair', '1 - Low'];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
 export default function Home() {
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+
   return (
     <div className="page-shell">
       <header className="topbar">
@@ -401,9 +406,88 @@ export default function Home() {
         </motion.section>
       </main>
 
+      <section className="enquiry-wrap" aria-label="Enquiry form">
+        <div className="enquiry-box">
+          <div className="enquiry-copy">
+            <p className="eyebrow">Enquire now</p>
+            <h3>Start your fragrance journey.</h3>
+          </div>
+
+          <div className="enquiry-actions">
+            <button type="button" className="primary-btn" onClick={() => setIsEnquiryOpen(true)}>
+              Open enquiry form
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {isEnquiryOpen && (
+        <div className="enquiry-modal-backdrop" onClick={() => setIsEnquiryOpen(false)}>
+          <div className="enquiry-modal" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="modal-close" onClick={() => setIsEnquiryOpen(false)} aria-label="Close enquiry form">
+              ×
+            </button>
+
+            <div className="enquiry-modal-header">
+              <p className="eyebrow">Enquire now</p>
+              <h3>Tell us about your fragrance preference.</h3>
+            </div>
+
+            <form className="enquiry-form modal-form">
+              <div className="field-group">
+                <label htmlFor="name">Name</label>
+                <input id="name" type="text" name="name" placeholder="Your full name" />
+              </div>
+
+              <div className="field-group">
+                <label htmlFor="email">Email</label>
+                <input id="email" type="email" name="email" placeholder="you@example.com" />
+              </div>
+
+              <div className="field-group">
+                <label htmlFor="phone">Phone</label>
+                <input id="phone" type="tel" name="phone" placeholder="+91 98xxx xxxxx" />
+              </div>
+
+              <div className="field-group">
+                <label htmlFor="product">Product</label>
+                <select id="product" name="product" defaultValue="">
+                  <option value="" disabled>Select a fragrance</option>
+                  {products.map((product) => (
+                    <option key={product.name} value={product.name}>{product.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="field-group">
+                <label htmlFor="location">Location</label>
+                <input id="location" type="text" name="location" placeholder="City or area" />
+              </div>
+
+              <div className="field-group">
+                <label htmlFor="rating">Rating</label>
+                <select id="rating" name="rating" defaultValue="">
+                  <option value="" disabled>Select your rating</option>
+                  {ratingOptions.map((option) => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="field-group full-width">
+                <label htmlFor="notes">More details</label>
+                <textarea id="notes" name="notes" rows={4} placeholder="Tell us about your scent preference, occasion, and any details you want us to know." />
+              </div>
+
+              <button type="submit" className="primary-btn modal-submit">Send enquiry</button>
+            </form>
+          </div>
+        </div>
+      )}
+
       <footer id="contact" className="footer">
         <div className="footer-grid">
-          <div>
+          <div className="footer-intro">
             <div className="brand-lockup footer-brand">
               <BrandLogo compact />
             </div>
