@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import BrandLogo from '@/components/BrandLogo';
 
 const navItems = [
   { label: 'Collection', href: '/collection' },
@@ -34,6 +35,44 @@ const products = [
   { name: 'Velvet Bloom', price: '₹ 2,799', tag: 'Unisex' },
 ];
 
+const whyChooseUs = [
+  {
+    title: 'Long-lasting impression',
+    text: 'Our fragrances are engineered to unfold slowly, leaving a refined trail that stays with you from dusk to late night.',
+  },
+  {
+    title: 'Premium ingredients',
+    text: 'Each blend is layered with sensual notes, balanced woods, and rich amber tones for a signature finish.',
+  },
+  {
+    title: 'Made for statement moments',
+    text: 'Whether it is a dinner date, gifting, or everyday confidence, every bottle is designed to feel intentional.',
+  },
+  {
+    title: 'Thoughtful gifting',
+    text: 'Luxury presentation, elegant details, and memorable scent profiles make every bottle gift-ready from the first glance.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'How long does Dark Elixir last?',
+    answer: 'It is crafted for a long-wearing trail, typically lasting 8 to 12 hours depending on skin chemistry and climate.',
+  },
+  {
+    question: 'Are these perfumes suitable for gifting?',
+    answer: 'Yes. Every fragrance comes in a premium presentation with elegant packaging designed for gifting and personal keepsakes.',
+  },
+  {
+    question: 'Is the scent unisex?',
+    answer: 'The collection is designed to feel versatile and expressive, with notes that complement both soft and bold personalities.',
+  },
+  {
+    question: 'Do you offer a fragrance consultation?',
+    answer: 'Yes. You can connect with us through the contact page for recommendations based on your preference, occasion, and scent profile.',
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
@@ -44,8 +83,7 @@ export default function Home() {
     <div className="page-shell">
       <header className="topbar">
         <div className="brand-lockup">
-          <div className="brand-mark">HA</div>
-          <div className="brand-name">House of Arham</div>
+          <BrandLogo />
         </div>
 
         <nav className="main-nav" aria-label="Main navigation">
@@ -71,7 +109,9 @@ export default function Home() {
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <p className="eyebrow">Luxury Perfume House</p>
-            <div className="hero-mark">HA</div>
+            <a href="/" className="hero-mark" aria-label="House of Arham home">
+              <BrandLogo />
+            </a>
 
             <h1>
               <span>House of</span>
@@ -287,14 +327,85 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
+
+        <motion.section
+          className="section-wrap why-choose"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <div className="section-heading centered">
+            <p className="eyebrow">Why choose us</p>
+            <h3>Luxury that feels personal</h3>
+          </div>
+
+          <div className="why-grid">
+            {whyChooseUs.map((item) => (
+              <article key={item.title} className="why-card">
+                <span className="why-index">0{whyChooseUs.indexOf(item) + 1}</span>
+                <h4>{item.title}</h4>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          className="section-wrap cta-band"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <div className="cta-band-inner">
+            <div>
+              <p className="eyebrow">Ready to begin</p>
+              <h3>Find the scent that leaves a signature.</h3>
+            </div>
+
+            <div className="cta-row cta-row-inline">
+              <a className="primary-btn" href="/collection">
+                Shop collection
+              </a>
+              <a className="secondary-btn" href="/contact">
+                Book a consultation
+              </a>
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          className="section-wrap faq-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <div className="section-heading centered">
+            <p className="eyebrow">FAQ</p>
+            <h3>Everything you want to know</h3>
+          </div>
+
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <details key={faq.question} className="faq-item" open={index === 0}>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </motion.section>
       </main>
 
       <footer id="contact" className="footer">
         <div className="footer-grid">
           <div>
             <div className="brand-lockup footer-brand">
-              <div className="brand-mark small">HA</div>
-              <div className="brand-name">House of Arham</div>
+              <BrandLogo compact />
             </div>
             <p>Luxury perfume experiences born for unforgettable moments.</p>
           </div>

@@ -1,3 +1,5 @@
+import BrandLogo from '@/components/BrandLogo';
+
 export default function CollectionPage() {
   const navItems = [
     { label: 'Collection', href: '/collection' },
@@ -17,8 +19,7 @@ export default function CollectionPage() {
     <div className="page-shell">
       <header className="topbar">
         <div className="brand-lockup">
-          <div className="brand-mark">HA</div>
-          <div className="brand-name">House of Arham</div>
+          <BrandLogo />
         </div>
 
         <nav className="main-nav" aria-label="Main navigation">
@@ -66,8 +67,7 @@ export default function CollectionPage() {
         <div className="footer-grid">
           <div>
             <div className="brand-lockup footer-brand">
-              <div className="brand-mark small">HA</div>
-              <div className="brand-name">House of Arham</div>
+              <BrandLogo compact />
             </div>
             <p>Luxury perfume experiences born for unforgettable moments.</p>
           </div>
